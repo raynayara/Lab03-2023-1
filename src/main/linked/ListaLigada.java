@@ -1,25 +1,63 @@
 package linked;
 
+import javax.swing.text.html.parser.Element;
+
 import list.EstruturaElementar;
 
 public class ListaLigada implements EstruturaElementar{
 
     private No cabeca;
+    
 
     public ListaLigada() {
+        cabeca = null;
 
     }
 
     @Override
     public boolean buscaElemento(int valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscaElemento'");
+        No element = cabeca;
+
+        if (element == null){
+            return false;
+
+        }else if (element.getValor() == valor) {
+            return true;
+
+        } else {
+            No aux = element;
+            while (aux.getProximo() != null) {
+                if (aux.getProximo().getValor() == valor) {
+                    return true;
+                } else {
+                    aux = aux.getProximo();
+                }
+            }
+            return false;      
+    }
     }
 
     @Override
     public int buscaIndice(int valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscaIndice'");
+        No inicio = cabeca;
+        if (inicio == null) {
+            return -1; 
+        } else {
+            int contador = 0;
+            No aux = inicio; 
+    
+            while (aux != null) {
+                
+                if (aux.getValor() == valor) {
+                    return contador; 
+                }
+                aux = aux.getProximo(); 
+                contador++; 
+            }
+    
+            return -1; 
+        }
+    
     }
 
     @Override
@@ -60,16 +98,31 @@ public class ListaLigada implements EstruturaElementar{
 
     @Override
     public void insereInicio(int valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insereInicio'");
+        if (cabeca == null){
+            cabeca = new No(valor);
+        }else {
+            No n = new No(valor);
+            n.setProximo(this.cabeca);
+            this.cabeca = n;
+        }
     }
 
     @Override
     public void insereFim(int valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insereFim'");
+        No Element = cabeca;
+        if (Element == null) {
+            Element = new No(valor); 
+        } else {
+            No novoNo = new No(valor); 
+            No aux = Element; 
+    
+            while (aux.getProximo() != null) {
+                
+                aux = aux.getProximo(); 
+            }
+            aux.setProximo(novoNo);
+        }
     }
-
     @Override
     public void remove(int valor) {
         // TODO Auto-generated method stub
