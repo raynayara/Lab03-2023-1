@@ -1,22 +1,27 @@
 package linked;
 
 public class No {
-    private int valor;
-    private No proximo;
+    //informações do nó (valor e o ponteiro do próximo)
+    private int info; //o nó vai receber apenas números inteiros 
+    private No proximo; // ponteiro do próximo nó
 
-    public No(int valor) {
-        this.valor = valor;
+    public No(int info) {
+        this.info = info;
         this.proximo = null;
     }
-
-    public int getValor() {
-        return this.valor;
+    //pega o valor
+    public int getInfo() {
+        return info;
     }
-
+    //guarda os dados do atributo da classe nó dentro da variavel valor
+    public void setInfo(int info){
+        this.info = info;
+    }
+    //Ler o valor do proximo nó
     public No getProximo() {
-        return this.proximo;
+        return proximo;
     }
-
+    //guarda os dados do proximo nó
     public void setProximo(No proximo) {
         this.proximo = proximo;
     }
