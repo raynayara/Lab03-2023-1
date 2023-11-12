@@ -116,28 +116,19 @@ public class ListaLigada implements EstruturaElementar{
 
     @Override
     public void insereElementoPosicao(int info, int buscaIndice) {
-    No no1 = cabeca;
-    No no2 = new No(info);
-
-    if (buscaIndice <= 0) {
+        No no1 = new No(info);
         
-        insereInicio(info);
-
-    } else if (buscaIndice >= tamanho) {
-        
-        insereFim(info);
-
-    } else {
-        
-        for (int i = 0; i < buscaIndice - 1; i++) {
-            no1 = no1.getProximo();
+        if(buscaIndice == 0){
+            no1.setProximo(this.cabeca);
+            this.cabeca = no1;
         }
-        no2.setInfo(info);
-        no2.setProximo(no1.getProximo());
-        no1.setProximo(no2);
-        tamanho++;
+        No no2 = this.cabeca;
+        for (int i = 0; i <= buscaIndice - 1 && no2 != null; i++){
+            no2 = no2.getProximo();
+        }
+        no2 = no1;
     }
-}
+
 
     @Override
     public void insereInicio(int info) {

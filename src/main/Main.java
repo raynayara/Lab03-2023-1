@@ -10,10 +10,13 @@ public class Main {
         System.out.println(no.getInfo());
         EstruturaElementar e = new ListaLigada();
         e.insereInicio(10);
+
+
         ListaLigada lista = new ListaLigada();
         lista.insereInicio(1);
         lista.insereInicio(0);
         int a = lista.buscaIndice(1);
         System.out.println(a);
+        lista.insereElementoPosicao(10, 5);
     }
 }
